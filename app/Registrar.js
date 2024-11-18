@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: 11,
   },
   subtitle: {
     fontSize: 16,
