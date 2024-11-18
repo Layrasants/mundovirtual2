@@ -7,3 +7,6 @@ import { Stack } from 'expo-router';
     <Stack.Screen name="login" options={{ headerShown: false }} />
     <Stack.Screen name="cadastros" options={{ headerShown: false }} />
 </Stack>
+
+
+//aaaa
