@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
-import { useRouter } from 'expo-router'; // Importando o hook useRouter
+import { useRouter } from 'expo-router';
 
 const Entrar = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const router = useRouter(); // Hook do Expo Router para navegação
+  const router = useRouter();
 
   const handleLogin = () => {
     if (!username || !password) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
-    // Lógica de autenticação pode ser adicionada aqui
     Alert.alert('Sucesso', 'Login realizado com sucesso!');
-
-    // Navegar para a tela /home após login bem-sucedido
     router.push('/Bemvindo');
   };
 
@@ -34,42 +31,42 @@ const Entrar = () => {
           onChangeText={setUsername}
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          placeholderTextColor="#ccc"
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={setPassword}
-        />
-
-        <View style={styles.passwordContainer}>
+        <View style={styles.passwordInputContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Senha"
+            placeholderTextColor="#ccc"
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={setPassword}
+          />
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Text style={styles.showPasswordText}>
               {showPassword ? 'Esconder' : 'Mostrar'}
             </Text>
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => Alert.alert('Recuperação de senha')}>
-            <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
-          </TouchableOpacity>
         </View>
+
+        <TouchableOpacity onPress={() => Alert.alert('Recuperação de senha')}>
+          <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.btn} onPress={handleLogin}>
           <Text style={styles.btnText}>Entrar</Text>
         </TouchableOpacity>
 
         <Text style={styles.register}>
-          Não possui uma conta?{' '}
-          <Text
-            style={styles.registerLink}
-            onPress={() => Alert.alert('Registrar')}
-          >
-            Registrar-se
-          </Text>
-        </Text>
+        Não possui uma conta?{' '}
+  <Text
+    style={styles.registerLink}
+    onPress={() => router.push('/')} 
+  >
+    Registrar-se
+  </Text>
+</Text>
 
-        <View style={styles.loginOptionsContainer}>
+
+       <View style={styles.loginOptionsContainer}>
           <Text style={styles.loginWith}>Entrar com</Text>
           <View style={styles.loginOptions}>
             <Image
@@ -123,18 +120,28 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 5,
   },
-  passwordContainer: {
+  passwordInputContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    backgroundColor: '#333',
+    borderRadius: 5,
+    marginVertical: 10,
+    paddingHorizontal: 10,
+  },
+  passwordInput: {
+    flex: 1,
+    color: '#fff',
+    paddingVertical: 10,
   },
   showPasswordText: {
-    color: '#007bff',
+    color: '#ccc',
+    marginLeft: 10,
   },
   forgotPassword: {
     color: '#007bff',
     textDecorationLine: 'underline',
+    marginTop: 10,
+    textAlign: 'right',
   },
   btn: {
     backgroundColor: '#007bff',
@@ -174,5 +181,3 @@ const styles = StyleSheet.create({
 });
 
 export default Entrar;
-
-//aaaa

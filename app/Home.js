@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-// Tela Home
 export default function Home() {
-  const router = useRouter(); // Hook de navegação
+  const router = useRouter(); 
 
   return (
     <View style={styles.container}>
@@ -13,7 +12,7 @@ export default function Home() {
       {/* Botão Atendimentos */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/Atendimento')} // Certifique-se de que a rota está correta
+        onPress={() => router.push('/Atendimento')} 
       >
         <Text style={styles.buttonText}>Atendimentos</Text>
       </TouchableOpacity>
@@ -21,7 +20,7 @@ export default function Home() {
       {/* Botão Pré-Atendimento */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/PreAtendimento')} // Certifique-se de que a rota está correta
+        onPress={() => router.push('/PreAtendimento')} 
       >
         <Text style={styles.buttonText}>Pré-Atendimento</Text>
       </TouchableOpacity>
@@ -37,7 +36,6 @@ export default function Home() {
   );
 }
 
-// Estilos do componente
 const styles = StyleSheet.create({
   container: {
     flex: 1,

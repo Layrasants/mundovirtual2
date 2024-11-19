@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useRouter } from 'expo-router'; // Hook de navegação do expo-router
+import { useRouter } from 'expo-router'; 
 
 export default function Registrar() {
-  const router = useRouter(); // Hook de navegação
+  const router = useRouter(); 
 
   const [name, setName] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -15,7 +15,7 @@ export default function Registrar() {
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleRegister = () => {
-    // Verificar se todos os campos foram preenchidos
+    // Verifica se todos os campos foram preenchidos
     if (!name || !telefone || !cpf || !endereco || !email || !password || !confirmPassword) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
@@ -37,7 +37,7 @@ export default function Registrar() {
     Alert.alert('Registro completo!', `Nome: ${name}, Email: ${email}`);
 
     // Redirecionar para a tela de Login
-    router.push('/Entrar'); // Navegação para tela "Entrar" após registro
+    router.push('/Entrar'); 
   };
 
   return (

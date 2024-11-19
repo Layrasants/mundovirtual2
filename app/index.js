@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function Home() {
-    const router = useRouter(); // hook para navegação
+    const router = useRouter(); 
 
     return (
         <View style={styles.container}>
@@ -16,7 +16,7 @@ export default function Home() {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            router.push('/Registrar'); // Caminho relativo para a rota Registrar
+                            router.push('/Registrar'); 
                         }}>
                         <Text style={styles.buttonText}>Técnico</Text>
                     </TouchableOpacity>
@@ -27,7 +27,7 @@ export default function Home() {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            router.push('/Registrar-cliente'); // Caminho relativo para a rota Registrar
+                            router.push('/Registrar-cliente'); 
                         }}>
                         <Text style={styles.buttonText}>Cliente</Text>
                     </TouchableOpacity>
@@ -96,4 +96,3 @@ const styles = StyleSheet.create({
 });
 
 
-//aaaa

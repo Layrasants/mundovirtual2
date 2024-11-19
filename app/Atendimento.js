@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-// Componente de Atendimento Individual
 const Atendimento = ({ id, name, dateTime, isDone, onToggle }) => {
   return (
     <View style={[styles.atendimento, isDone ? styles.done : styles.pending]}>
       <View style={styles.info}>
-        {/* Substituindo <strong> por estilo no React Native */}
         <Text style={[styles.attendanceText, styles.bold]}>
           {id}º - {name}
         </Text>
@@ -22,7 +20,6 @@ const Atendimento = ({ id, name, dateTime, isDone, onToggle }) => {
   );
 };
 
-// Tela de Atendimentos
 export default function App() {
   const [atendimentos, setAtendimentos] = useState([
     { id: 1, name: 'Maria Clara Oliveira', dateTime: '09/10/2023 às 09:30', isDone: false },
@@ -49,12 +46,10 @@ export default function App() {
           onToggle={toggleAtendimento}
         />
       ))}
-      {/* Botão de voltar pode ser adicionado conforme necessário */}
     </SafeAreaView>
   );
 }
 
-// Estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -83,7 +78,6 @@ const styles = StyleSheet.create({
   attendanceText: {
     color: 'white',
   },
-  // Estilo de negrito para o texto
   bold: {
     fontWeight: 'bold',
   },
