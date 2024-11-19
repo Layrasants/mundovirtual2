@@ -1,19 +1,20 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 
+const { height } = Dimensions.get('window');
+
 export default function Welcome() {
-  const router = useRouter(); // Hook de navegação
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Imagem de fundo */}
-      <Image 
-        source={{ uri: 'https://link-para-sua-imagem/design1.png' }} 
-        style={styles.image} 
+      <Image
+        source={require('../assets/design.png')}
+        style={[styles.backgroundImage, { height: height * 0.4 }]}
       />
-
-      {/* Conteúdo de boas-vindas */}
+      <Text style={styles.topText}>MUNDO VIRTUAL</Text>
+      <Text style={styles.assistanceText}>Assistência técnica</Text>
       <View style={styles.content}>
         <Text style={styles.subTitle}>Seja bem-vindo ao</Text>
         <Text style={styles.title}>MUNDO VIRTUAL</Text>
@@ -26,11 +27,9 @@ export default function Welcome() {
         <Text style={styles.text}>
           É UM ENORME PRAZER TÊ-LO CONOSCO!
         </Text>
-
-        {/* Botão "Continuar" */}
-        <TouchableOpacity 
-          style={styles.continueButton} 
-          onPress={() => router.push('/Home')} // Navegação com expo-router
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => router.push('/Home')}
         >
           <Text style={styles.continueButtonText}>Continuar</Text>
         </TouchableOpacity>
@@ -46,29 +45,54 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  image: {
+  backgroundImage: {
     width: '100%',
-    height: 200,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 0,
+  },
+  topText: {
+    position: 'absolute',
+    top: 30,
+    left: '50%',
+    transform: [{ translateX: -100 }],
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#fff',
+    zIndex: 1,
+  },
+  assistanceText: {
+    position: 'absolute',
+    top: 70,
+    right: 20,
+    fontSize: 22,
+    color: '#fff',
+    zIndex: 1,
   },
   content: {
     padding: 20,
     alignItems: 'center',
+    zIndex: 1,
+    marginTop: height * 0.2,
   },
   title: {
-    fontSize: 22,
+    fontSize: 30,
     color: '#fff',
+    fontWeight: 'bold',
     marginBottom: 10,
   },
   subTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 5,
+    marginBottom: 15,
+    marginTop: 25,
   },
   text: {
     fontSize: 16,
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: 15,
     textAlign: 'center',
   },
   continueButton: {
@@ -76,13 +100,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 30,
   },
   continueButtonText: {
     fontSize: 18,
     color: '#fff',
   },
 });
-
-
-//aaaa

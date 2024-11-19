@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter } from 'expo-router'; // Hook de navegação do expo-router
 
 export default function Registrar() {
   const router = useRouter(); // Hook de navegação
@@ -15,21 +15,29 @@ export default function Registrar() {
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleRegister = () => {
+    // Verificar se todos os campos foram preenchidos
     if (!name || !telefone || !cpf || !endereco || !email || !password || !confirmPassword) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
+
+    // Verificar se as senhas coincidem
     if (password !== confirmPassword) {
       Alert.alert('Erro', 'As senhas não coincidem.');
       return;
     }
+
+    // Verificar se o usuário aceitou os Termos e Condições
     if (!termsAccepted) {
       Alert.alert('Erro', 'Você deve aceitar os Termos e Condições.');
       return;
     }
 
+    // Mostrar um alerta de registro completo
     Alert.alert('Registro completo!', `Nome: ${name}, Email: ${email}`);
-    router.push('/BemVindo'); // Navegação para tela BemVindo
+
+    // Redirecionar para a tela de Login
+    router.push('/Entrar'); // Navegação para tela "Entrar" após registro
   };
 
   return (
@@ -37,13 +45,51 @@ export default function Registrar() {
       <Text style={styles.title}>Registrar-se</Text>
       <Text style={styles.subtitle}>Criar uma nova conta</Text>
 
-      <TextInput style={styles.input} placeholder="Nome" value={name} onChangeText={setName} />
-      <TextInput style={styles.input} placeholder="Telefone" value={telefone} onChangeText={setTelefone} />
-      <TextInput style={styles.input} placeholder="CPF" value={cpf} onChangeText={setCpf} />
-      <TextInput style={styles.input} placeholder="Endereço" value={endereco} onChangeText={setEndereco} />
-      <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Senha" value={password} onChangeText={setPassword} secureTextEntry />
-      <TextInput style={styles.input} placeholder="Confirmar senha" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry />
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Telefone"
+        value={telefone}
+        onChangeText={setTelefone}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="CPF"
+        value={cpf}
+        onChangeText={setCpf}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Endereço"
+        value={endereco}
+        onChangeText={setEndereco}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Confirmar senha"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry
+      />
 
       <TouchableOpacity onPress={() => setTermsAccepted(!termsAccepted)}>
         <Text style={styles.terms}>{termsAccepted ? '☑' : '☐'} Aceito os Termos e Condições</Text>
@@ -53,7 +99,8 @@ export default function Registrar() {
         <Text style={styles.buttonText}>Registrar-se</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push('/Login')}>
+      {/* Botão para redirecionar para a tela de Login */}
+      <TouchableOpacity onPress={() => router.push('/Entrar')}>
         <Text style={styles.loginLink}>Já tem uma conta? Entrar</Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -27,7 +27,7 @@ export default function Home() {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            router.push('/Registrar'); // Caminho relativo para a rota Registrar
+                            router.push('/Registrar-cliente'); // Caminho relativo para a rota Registrar
                         }}>
                         <Text style={styles.buttonText}>Cliente</Text>
                     </TouchableOpacity>
