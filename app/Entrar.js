@@ -16,9 +16,9 @@ const Entrar = () => {
     }
     // Lógica de autenticação pode ser adicionada aqui
     Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    
+
     // Navegar para a tela /home após login bem-sucedido
-    router.push('/home');
+    router.push('/Bemvindo');
   };
 
   return (

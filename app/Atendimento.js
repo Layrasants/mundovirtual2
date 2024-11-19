@@ -6,7 +6,10 @@ const Atendimento = ({ id, name, dateTime, isDone, onToggle }) => {
   return (
     <View style={[styles.atendimento, isDone ? styles.done : styles.pending]}>
       <View style={styles.info}>
-        <Text style={styles.attendanceText}><strong>{id}º - {name}</strong></Text>
+        {/* Substituindo <strong> por estilo no React Native */}
+        <Text style={[styles.attendanceText, styles.bold]}>
+          {id}º - {name}
+        </Text>
         <Text style={styles.attendanceDate}>Atendimento: {dateTime}</Text>
       </View>
       <TouchableOpacity
@@ -80,6 +83,10 @@ const styles = StyleSheet.create({
   attendanceText: {
     color: 'white',
   },
+  // Estilo de negrito para o texto
+  bold: {
+    fontWeight: 'bold',
+  },
   attendanceDate: {
     color: 'white',
   },
@@ -106,5 +113,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#606060',
   },
 });
-
-//aaaa
