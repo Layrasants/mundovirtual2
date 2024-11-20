@@ -33,6 +33,10 @@ export default function App() {
     ));
   };
 
+  const clearCompleted = () => {
+    setAtendimentos(atendimentos.filter(atendimento => !atendimento.isDone));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Atendimentos</Text>
@@ -46,6 +50,11 @@ export default function App() {
           onToggle={toggleAtendimento}
         />
       ))}
+      {atendimentos.some(atendimento => atendimento.isDone) && (
+        <TouchableOpacity style={styles.clearButton} onPress={clearCompleted}>
+          <Text style={styles.clearButtonText}>Limpar Concluídos</Text>
+        </TouchableOpacity>
+      )}
     </SafeAreaView>
   );
 }
@@ -105,5 +114,17 @@ const styles = StyleSheet.create({
   },
   pending: {
     backgroundColor: '#606060',
+  },
+  clearButton: {
+    marginTop: 20,
+    backgroundColor: '#FF5252',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  clearButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
