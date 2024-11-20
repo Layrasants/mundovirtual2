@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 
 const Atendimento = ({ id, name, dateTime, isDone, onToggle }) => {
   return (
@@ -28,29 +35,37 @@ export default function App() {
   ]);
 
   const toggleAtendimento = (id) => {
-    setAtendimentos(atendimentos.map(atendimento =>
-      atendimento.id === id ? { ...atendimento, isDone: !atendimento.isDone } : atendimento
-    ));
+    setAtendimentos(
+      atendimentos.map((atendimento) =>
+        atendimento.id === id
+          ? { ...atendimento, isDone: !atendimento.isDone }
+          : atendimento
+      )
+    );
   };
 
   const clearCompleted = () => {
-    setAtendimentos(atendimentos.filter(atendimento => !atendimento.isDone));
+    setAtendimentos(atendimentos.filter((atendimento) => !atendimento.isDone));
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Atendimentos</Text>
-      {atendimentos.map(atendimento => (
-        <Atendimento
-          key={atendimento.id}
-          id={atendimento.id}
-          name={atendimento.name}
-          dateTime={atendimento.dateTime}
-          isDone={atendimento.isDone}
-          onToggle={toggleAtendimento}
-        />
-      ))}
-      {atendimentos.some(atendimento => atendimento.isDone) && (
+      <FlatList
+        data={atendimentos}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <Atendimento
+            id={item.id}
+            name={item.name}
+            dateTime={item.dateTime}
+            isDone={item.isDone}
+            onToggle={toggleAtendimento}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 20 }}
+      />
+      {atendimentos.some((atendimento) => atendimento.isDone) && (
         <TouchableOpacity style={styles.clearButton} onPress={clearCompleted}>
           <Text style={styles.clearButtonText}>Limpar Concluídos</Text>
         </TouchableOpacity>
