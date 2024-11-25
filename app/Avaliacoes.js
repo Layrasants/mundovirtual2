@@ -33,7 +33,7 @@ const Avaliacoes = () => {
                 <Text style={styles.comment}>Ótimo atendimento, funcionários prestativos e atenciosos, parabéns!</Text>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => router.push('/Home')}>
+            <TouchableOpacity style={styles.button} onPress={() => router.push('/Home-cliente')}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>
