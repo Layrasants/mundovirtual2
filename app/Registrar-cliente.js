@@ -78,7 +78,7 @@ export default function Registrar() {
         <Text style={styles.buttonText}>Registrar-se</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push('/Entrar')}>
+      <TouchableOpacity onPress={() => router.push('/Entrar-cliente')}>
         <Text style={styles.loginLink}>Já tem uma conta? Entrar</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
       margin: 10,
       backgroundColor: '#333',
       borderRadius: 5,
-      color: '#ccc', // Cor do texto inserido
+      color: '#ccc', 
     },
     button: {
       backgroundColor: '#28a745',

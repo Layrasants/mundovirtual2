@@ -9,18 +9,18 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
 
-      {/* Botão Atendimentos */}
+      {/* Botão Agndamento*/}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/Atendimento')} 
+        onPress={() => router.push('/Agendamentos')} 
       >
         <Text style={styles.buttonText}>Agendar atendimento</Text>
       </TouchableOpacity>
 
-      {/* Botão Pré-Atendimento */}
+      {/* Botão Localização*/}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/PreAtendimento')} 
+        onPress={() => router.push('/localizacao')} 
       >
         <Text style={styles.buttonText}>Ver localização</Text>
       </TouchableOpacity>
@@ -28,7 +28,7 @@ export default function Home() {
       {/* Botão Avaliações */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/Avaliacoes')} // Certifique-se de que a rota está correta
+        onPress={() => router.push('/Avaliacoes')} 
       >
         <Text style={styles.buttonText}>Avaliações</Text>
       </TouchableOpacity>

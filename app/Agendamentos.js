@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {StyleSheet, Text, View,   TouchableOpacity,Alert, ScrollView,} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView, Dimensions } from "react-native";
 
 export default function App() {
   const [currentYear, setCurrentYear] = useState(2024);
@@ -138,21 +138,21 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1, // O container ocupa toda a tela
+    justifyContent: "center", // Centraliza o conteúdo verticalmente
+    alignItems: "center", // Centraliza o conteúdo horizontalmente
     backgroundColor: "#f5f5f5",
   },
   modal: {
-    width: 320,
-    height: 640,
+    width: "100%", // Modal ocupa a largura toda
+    height: "100%", // Modal ocupa a altura toda da tela
     backgroundColor: "#1a1a2e",
-    borderRadius: 15,
+    borderRadius: 0, // Remover borda arredondada para ocupar mais área
     padding: 20,
     alignItems: "center",
   },
   header: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
     color: "#fff",
     marginBottom: 10,
@@ -162,15 +162,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   navButton: {
-    fontSize: 18,
+    fontSize: 30,
     color: "#28a745",
     fontWeight: "bold",
   },
   monthYear: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#fff",
   },
@@ -178,11 +178,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    marginVertical: 10,
+    width: "100%",
+    height: "70%", // Definindo altura maior para o calendário
   },
   calendarCell: {
-    width: 40,
-    height: 40,
+    width: "13%", // Tamanho das células para caber bem na tela cheia
+    height: "13%", // Tamanho das células
     justifyContent: "center",
     alignItems: "center",
     margin: 2,
@@ -193,6 +194,7 @@ const styles = StyleSheet.create({
   },
   calendarText: {
     color: "#ccc",
+    fontSize: 16,
   },
   selectedText: {
     color: "#fff",
