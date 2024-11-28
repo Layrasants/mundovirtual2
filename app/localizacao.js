@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, Picker, Alert } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 export default function App() {
   const [cep, setCep] = useState("");
