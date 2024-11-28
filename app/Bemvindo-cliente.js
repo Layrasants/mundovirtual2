@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Picker } from "@react-native-picker/picker";
 
 const { height } = Dimensions.get('window');
 
