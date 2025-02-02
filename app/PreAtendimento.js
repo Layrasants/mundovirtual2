@@ -4,8 +4,8 @@ import { SafeAreaView, Text, TouchableOpacity, StyleSheet, Alert } from 'react-n
 const PreAtendimentoScreen = () => {
   const atendimentos = [
     { id: 1, name: 'Maria Clara Oliveira', problem: 'Meu pc não tá dando vídeo' },
-    { id: 2, name: 'Carla Julia', problem: 'Entrou água no meu pc!!' },
-    { id: 3, name: 'Mauro Alves', problem: 'Meu notebook quebrou a tela' },
+    { id: 2, name: 'Mateus Oliveira', problem: 'Entrou água no meu pc!!' },
+    { id: 3, name: 'Augusta Santos', problem: 'Meu notebook quebrou a tela' },
   ];
 
   const openChat = (name, problem) => {
@@ -14,7 +14,7 @@ const PreAtendimentoScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Pré-atendimentos</Text>
+      <Text style={styles.title}>Pré-atendimento</Text>
       {atendimentos.map((atendimento) => (
         <TouchableOpacity
           key={atendimento.id}
