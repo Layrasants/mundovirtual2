@@ -1,12 +1,5 @@
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
+import { useState } from 'react';
+import {SafeAreaView,View,Text,TouchableOpacity,FlatList,StyleSheet} from 'react-native';
 
 const Atendimento = ({ id, name, dateTime, isDone, onToggle }) => {
   return (

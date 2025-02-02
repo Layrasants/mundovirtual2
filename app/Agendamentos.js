@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView, Dimensions } from "react-native";
+import {StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView} from "react-native";
 
 export default function App() {
   const [currentYear, setCurrentYear] = useState(2024);
-  const [currentMonth, setCurrentMonth] = useState(0); // Janeiro
+  const [currentMonth, setCurrentMonth] = useState(0); 
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
 
