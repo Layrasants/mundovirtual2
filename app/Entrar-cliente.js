@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebaseConfig';
 
 const Entrar = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
 
-  const handleLogin = () => {
-    if (!username || !password) {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-      return;
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      router.replace('/Bemvindo-cliente');
+    } catch (error) {
+      Alert.alert('Erro', error.message)
     }
-    Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    router.push('/Bemvindo-cliente');
-  };
+  }
+
+  // const handleLogin = () => {
+  //   if (!username || !password) {
+  //     Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+  //     return;
+  //   }
+  //   Alert.alert('Sucesso', 'Login realizado com sucesso!');
+  //   router.push('/Bemvindo-cliente');
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -25,10 +39,10 @@ const Entrar = () => {
 
         <TextInput
           style={styles.input}
-          placeholder="Nome"
+          placeholder="Email"
           placeholderTextColor="#ccc"
-          value={username}
-          onChangeText={setUsername}
+          value={email}
+          onChangeText={setEmail}
         />
 
         <View style={styles.passwordInputContainer}>

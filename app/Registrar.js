@@ -1,51 +1,64 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useRouter } from 'expo-router'; 
+import { useRouter } from 'expo-router';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebaseConfig';
 
 export default function Registrar() {
   const router = useRouter(); 
 
-  const [name, setName] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [endereco, setEndereco] = useState('');
+  // const [name, setName] = useState('');
+  // const [telefone, setTelefone] = useState('');
+  // const [cpf, setCpf] = useState('');
+  // const [endereco, setEndereco] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const handleRegister = () => {
-    // Verifica se todos os campos foram preenchidos
-    if (!name || !telefone || !cpf || !endereco || !email || !password || !confirmPassword) {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-      return;
+  const handleRegister = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      // Signed up
+      router.replace('/Entrar');
+    } catch (error) {
+      console.error(error.code);
+      console.error(error.message);
     }
+  }
 
-    // Verificar se as senhas coincidem
-    if (password !== confirmPassword) {
-      Alert.alert('Erro', 'As senhas não coincidem.');
-      return;
-    }
+  // const handleRegister = () => {
+  //   // Verifica se todos os campos foram preenchidos
+  //   if (!name || !telefone || !cpf || !endereco || !email || !password || !confirmPassword) {
+  //     Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+  //     return;
+  //   }
 
-    // Verificar se o usuário aceitou os Termos e Condições
-    if (!termsAccepted) {
-      Alert.alert('Erro', 'Você deve aceitar os Termos e Condições.');
-      return;
-    }
+  //   // Verificar se as senhas coincidem
+  //   if (password !== confirmPassword) {
+  //     Alert.alert('Erro', 'As senhas não coincidem.');
+  //     return;
+  //   }
 
-    // Mostrar um alerta de registro completo
-    Alert.alert('Registro completo!', `Nome: ${name}, Email: ${email}`);
+  //   // Verificar se o usuário aceitou os Termos e Condições
+  //   if (!termsAccepted) {
+  //     Alert.alert('Erro', 'Você deve aceitar os Termos e Condições.');
+  //     return;
+  //   }
 
-    // Redirecionar para a tela de Login
-    router.push('/Entrar'); 
-  };
+  //   // Mostrar um alerta de registro completo
+  //   Alert.alert('Registro completo!', `Nome: ${name}, Email: ${email}`);
+
+  //   // Redirecionar para a tela de Login
+  //   router.push('/Entrar'); 
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Registrar-se</Text>
       <Text style={styles.subtitle}>Criar uma nova conta</Text>
 
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         placeholder="Nome"
         value={name}
@@ -68,7 +81,7 @@ export default function Registrar() {
         placeholder="Endereço"
         value={endereco}
         onChangeText={setEndereco}
-      />
+      /> */}
       <TextInput
         style={styles.input}
         placeholder="Email"
